@@ -1,0 +1,54 @@
+version: '3.4'
+
+services:
+
+  frontend:
+    image: ubuntu:latest    
+    networks: 
+      - front-tier
+      - back-tier
+    ports:
+      - "8000:8000"
+    volumes: ["/home/azrin/dockers/docker_laravel/laravel_project_frontend:/opt"]
+    restart: always 
+
+  backend: 
+    image: mysql:5.7.32
+    networks: 
+      - back-tier
+    environment:
+      - MYSQL_ROOT_PASSWORD=2525
+      - MYSQL_DATABASE=portal
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=2525 
+    hostname: mysql-docker
+    ports:
+      - "3307:3307"
+    volumes: ["/home/azrin/dockers/docker_laravel/laravel_project_backend:/var/lib/mysql-dockers/laravel"]
+    restart: always
+
+networks:
+  front-tier: {}
+  back-tier: {}
+   
+    
+
+      
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
